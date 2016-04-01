@@ -11,9 +11,9 @@ RUN apk add --update musl-dev g++ gcc make python nodejs git && \
 
 COPY opt/config.json /opt/genieacs/config/
 
-EXPOSE 7547 7557 7567
+EXPOSE 7547  
 CMD ["/opt/genieacs/bin/genieacs-cwmp"]
 #EXPOSE 7557
-#CMD ["/opt/genieacs/bin/genieacs-cwmp"]
+#CMD ["/opt/genieacs/bin/genieacs-nbi"]
 #EXPOSE 7567
-#CMD ["/opt/genieacs/bin/genieacs-cwmp"]
+#CMD ["/opt/genieacs/bin/genieacs-fs"]

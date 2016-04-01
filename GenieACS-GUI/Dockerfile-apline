@@ -1,0 +1,15 @@
+FROM alpine:latest
+
+RUN apk add --update musl-dev g++ gcc make git ruby zlib-dev && \
+    gem install rdoc && \
+    gem install rails && \
+    gem install bundle && \
+	rm -rf /var/cache/apk/* && \
+	mkdir /opt/ && \
+	cd /opt/ && \
+	git clone https://github.com/zaidka/genieacs-gui.git && \
+	cd genieacs-gui && \
+	apk del musl-dev g++ gcc make git 
+
+#EXPOSE 7547 
+#CMD ["/opt/genieacs/bin/genieacs-cwmp"]
