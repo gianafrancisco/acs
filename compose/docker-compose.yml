@@ -12,7 +12,7 @@ services:
   cwmp:
     image: fgiana/genieacs
     ports:
-     - "7547"
+     - "7547:7547"
     depends_on:
      - redis
      - mongo
@@ -26,7 +26,7 @@ services:
   nbi:
     image: fgiana/genieacs
     ports:
-     - "7557"
+     - "7557:7547"
     depends_on:
      - redis
      - mongo
@@ -40,7 +40,7 @@ services:
   fs:
     image: fgiana/genieacs
     ports:
-     - "7567"
+     - "7567:7547"
     depends_on:
      - redis
      - mongo
@@ -50,3 +50,17 @@ services:
      - mongo:mongodb_host
      - redis:redis_host
     command: /opt/genieacs/bin/genieacs-fs
+
+  gui:
+    image: fgiana/genieacs_gui
+    ports:
+     - "3000:3000"
+    depends_on:
+     - redis
+     - mongo
+    depends_on:
+     - nbi
+    #volumes:
+    # - /root/scenario/config.json:/opt/genieacs/config/config.json:ro
+    links:
+     - nbi:genieacs_api_host    
