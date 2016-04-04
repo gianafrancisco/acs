@@ -4,7 +4,7 @@ RUN apk add --update musl-dev g++ gcc make python nodejs git && \
 	rm -rf /var/cache/apk/* && \
 	mkdir /opt/ && \
 	cd /opt/ && \
-	git clone https://github.com/zaidka/genieacs.git && \
+	git clone https://github.com/zaidka/genieacs.git --branch v1.0 && \
 	cd genieacs && \
 	npm install && npm run configure && npm run compile && \
 	apk del musl-dev g++ gcc make python git 
