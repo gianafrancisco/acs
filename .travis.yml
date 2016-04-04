@@ -2,13 +2,15 @@ sudo: required
 
 services:
   - docker
-install: true
+install:
+  - docker build -t fgiana/genieacs GenieACS
+  - docker build -t fgiana/genieacs_gui GenieACS-GUI
+
+script: true
 
 before_install:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
 after_success:
-  - docker build -t fgiana/genieacs GenieACS
-  - docker build -t fgiana/genieacs_gui GenieACS-GUI
   - docker push fgiana/genieacs
   - docker push fgiana/genieacs_gui
