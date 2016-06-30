@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.3
 
 RUN apk add --update musl-dev g++ gcc make python nodejs git && \
 	rm -rf /var/cache/apk/* && \
